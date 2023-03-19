@@ -1,26 +1,59 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <label for="search">Sélectionner une ville française :</label>
+    <input type="text" id="search" v-model="query" @input="searchCities" />
+    <ul v-if="searchResults.length">
+      <li v-for="result in searchResults" :key="result.code">
+        {{ result.nom }} ({{ getDepartmentName(result.codeDepartement) }} - {{ getRegionName(result.codeRegion) }})
+      </li>
+    </ul>
+    <p v-else> Vide </p>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  data() {
+    return {
+      query: "",
+      searchResults: [],
+      departments: [],
+      regions: [],
+    };
+  },
+  methods: {
+    async searchCities() {
+      if (this.query === "") {
+        this.searchResults = [];
+        return;
+      }
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+      const response = await fetch(
+        `https://geo.api.gouv.fr/communes?nom=${this.query}&fields=nom,codeDepartement,codeRegion`
+      );
+      const data = await response.json();
+      this.searchResults = data;
+    },
+    async loadDepartments() {
+      const response = await fetch("https://geo.api.gouv.fr/departements");
+      const data = await response.json();
+      this.departments = data;
+    },
+    async loadRegions() {
+      const response = await fetch("https://geo.api.gouv.fr/regions");
+      const data = await response.json();
+      this.regions = data;
+    },
+    getDepartmentName(code) {
+      return this.departments.find((dept) => dept.code === code)?.nom || "Unknown";
+    },
+    getRegionName(code) {
+      return this.regions.find((region) => region.code === code)?.nom || "Unknown";
+    },
+  },
+  mounted() {
+    this.loadDepartments();
+    this.loadRegions();
+  },
+};
+</script>
