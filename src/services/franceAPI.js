@@ -1,14 +1,14 @@
-const loadCityData = async function() {
+const loadCity = async function() {
   const response = await fetch("https://geo.api.gouv.fr/communes");
   return response.json();
 };
   
-  const loadDepartmentData = async function() {
+  const loadDepartment = async function() {
     const response = await fetch("https://geo.api.gouv.fr/departements");
     return response.json();
   };
   
-  const loadRegionData = async function() {
+  const loadRegion = async function() {
     const response = await fetch("https://geo.api.gouv.fr/regions");
     return response.json();
   };
@@ -28,4 +28,4 @@ const loadCityData = async function() {
   };
 
   
-  export { loadCityData, loadDepartmentData, loadRegionData, searchCities };
+  export { loadCity, loadDepartment, loadRegion, searchCities };

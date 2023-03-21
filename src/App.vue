@@ -1,5 +1,6 @@
 <script>
-import {loadDepartmentData, loadRegionData, searchCities } from './services/franceAPI.js';
+import {loadDepartment, loadRegion, searchCities } from './services/franceAPI.js';
+import {getCityData } from './city.js';
 
 export default {
   data() {
@@ -8,6 +9,8 @@ export default {
       searchResults: [],
       departments: [],
       regions: [],
+      cityData: [],
+
     };
   },
   methods: {
@@ -23,8 +26,9 @@ export default {
 
 async mounted() {
   try {
-    this.departments = await loadDepartmentData();
-    this.regions = await loadRegionData();
+    this.departments = await loadDepartment();
+    this.regions = await loadRegion();
+    this.cityData = await getCityData();
   } catch (error) {
     console.error(error);
   }
