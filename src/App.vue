@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import {loadDepartmentData, loadRegionData } from './services/franceAPI.js';
+
 export default {
   data() {
     return {
@@ -34,7 +36,27 @@ export default {
       const data = await response.json();
       this.searchResults = data;
     },
-    async loadDepartments() {
+    getDepartmentName(code) {
+      return this.departments.find((dept) => dept.code === code)?.nom || "Unknown";
+    },
+    getRegionName(code) {
+      return this.regions.find((region) => region.code === code)?.nom || "Unknown";
+    },
+  },
+async mounted() {
+  try {
+    this.departments = await loadDepartmentData();
+    this.regions = await loadRegionData();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+};
+</script>
+
+/***     async loadDepartments() {
       const response = await fetch("https://geo.api.gouv.fr/departements");
       const data = await response.json();
       this.departments = data;
@@ -43,17 +65,4 @@ export default {
       const response = await fetch("https://geo.api.gouv.fr/regions");
       const data = await response.json();
       this.regions = data;
-    },
-    getDepartmentName(code) {
-      return this.departments.find((dept) => dept.code === code)?.nom || "Unknown";
-    },
-    getRegionName(code) {
-      return this.regions.find((region) => region.code === code)?.nom || "Unknown";
-    },
-  },
-  mounted() {
-    this.loadDepartments();
-    this.loadRegions();
-  },
-};
-</script>
+    }, ***/

@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-/*import { getRatpData } from './services/ratpAPI'*/
+//import { vuerouter } from 'vue'
+//import { getCityCard } from './cityCard'
 
 createApp(App).mount('#app')
 
 // npm run serve à la racine
+
