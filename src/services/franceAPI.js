@@ -1,11 +1,7 @@
 const loadCityData = async function() {
-    const response = await fetch("https://geo.api.gouv.fr/communes")
-    if (response.status == 200) {
-      return response.json()
-    } else {
-      new Error(response.statusText)
-    }
-  }
+  const response = await fetch("https://geo.api.gouv.fr/communes");
+  return response.json();
+};
   
   const loadDepartmentData = async function() {
     const response = await fetch("https://geo.api.gouv.fr/departements");
@@ -17,5 +13,19 @@ const loadCityData = async function() {
     return response.json();
   };
   
-  export { loadCityData, loadDepartmentData, loadRegionData };
   
+  const  searchCities = async function() {
+    if (this.query === "") {
+      this.searchResults = [];
+      return;
+    }
+
+    const response = await fetch(
+      `https://geo.api.gouv.fr/communes?nom=${this.query}&fields=nom,codeDepartement,codeRegion`
+    );
+    const data = await response.json();
+    this.searchResults = data;
+  };
+
+  
+  export { loadCityData, loadDepartmentData, loadRegionData, searchCities };
