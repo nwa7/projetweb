@@ -45,12 +45,14 @@ export default {
     <input type="text" id="search" v-model="query" @input="searchCities" />
     <div class="city-list" v-if="searchResults.length">
       <div v-for="(result, index) in searchResults" :key="result.code" :class="{ 'city-item': true, 'first-in-row': index % 5 === 0 }">
+        <div class = "card-box">
         <div class="city-image-container">
           <img class="city-image" src="@/assets/city.jpg" alt="City">
-        </div>
+          </div>
         <div class="city-details">
           <div class="city-name">{{ result.nom }}</div>
           <div class="city-location">{{ getDepartmentName(result.codeDepartement) }} - {{ getRegionName(result.codeRegion) }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -72,6 +74,38 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
+.card-box {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  margin-top:10px;
+  align-items: center;
+  justify-content: center;
+  background: #ff85859d;
+  border-radius: 0% 0% 5% 5%;
+  box-shadow:
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+}
+
+.card-box:hover {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  background: #ff60609d;
+  border-radius: 0% 0% 5% 5%;
+  box-shadow:
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+}
+
 .first-in-row {
   margin-left: 0;
 }
@@ -79,12 +113,11 @@ export default {
   width: 100%;
   height: 150px;
   margin-bottom: 10px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 .city-image {
-  max-width: 100%;
+  width: 100%;
   max-height: 100%;
 }
 .city-details {
@@ -94,12 +127,13 @@ export default {
 }
 .city-name {
   font-family: 'Staatliches', cursive;
-  font-weight: bold;
   letter-spacing: 1px;
   font-size : 20px;
   margin-bottom: 5px;
+  margin-left:2px;
+  margin-right:2px;
 }
 .city-location {
-  color: #666;
+  color: #666666;
 }
 </style>
