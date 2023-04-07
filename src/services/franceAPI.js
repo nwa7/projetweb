@@ -1,16 +1,32 @@
 const loadCity = async function() {
   const response = await fetch("https://geo.api.gouv.fr/communes");
-  return response.json();
+  if(response.status == 200) {
+    return response.json()
+  }
+  else {
+    new Error(response.statusText)
+  }
+  
 };
   
   const loadDepartment = async function() {
     const response = await fetch("https://geo.api.gouv.fr/departements");
-    return response.json();
+    if(response.status == 200) {
+      return response.json()
+    }
+    else {
+      new Error(response.statusText)
+    }
   };
   
   const loadRegion = async function() {
     const response = await fetch("https://geo.api.gouv.fr/regions");
-    return response.json();
+    if(response.status == 200) {
+      return response.json()
+    }
+    else {
+      new Error(response.statusText)
+    }
   };
   
   
@@ -19,7 +35,6 @@ const loadCity = async function() {
       this.searchResults = [];
       return;
     }
-
     const response = await fetch(
       `https://geo.api.gouv.fr/communes?nom=${this.query}&fields=nom,codeDepartement,codeRegion`
     );
