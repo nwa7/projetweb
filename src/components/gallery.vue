@@ -58,7 +58,7 @@
   
   <script>
   
-    import { loadCity } from '@/services/api/franceAPI';
+    import { loadCity } from '@/services/franceAPI';
   
     import cityCard from './cityCard.vue';
   
@@ -71,7 +71,7 @@
   
     data() {
         return {
-            cityData : [],
+            citiesData : [],
             search:'',
             gridView: true,
         }
@@ -79,7 +79,7 @@
     computed: {
         searchingList(){
             return this.citiesData.filter((citiesData) => {
-                return cityData.title.toLowerCase().includes(this.search.toLowerCase());
+                return citiesData.title.toLowerCase().includes(this.search.toLowerCase());
             })
         },
     },
@@ -119,14 +119,14 @@
         background-color: rgb(1, 1, 10);
     }
     .search-bar>.fa-solid{
-        color: rgba(165, 10, 196, 0.835);
+        color: #ff85859d;
         position: relative;
         left: 3.5rem;
     }
     span{
         position: relative;
         right: 1.3rem;
-        color:#2eb7eb;
+        color:#f45e5e9d;
         cursor: pointer;
     }
     input{
@@ -134,13 +134,13 @@
         width: 15rem;
         padding-left: 1.6rem;
         border-radius: 5px;
-        border: 2px solid rgba(165, 10, 196, 0.835);
+        border: 2px solid #ff85859d;
         margin: 2rem;
     }
     
     input:focus {
         outline: none;
-        border: 2px solid #2eb7eb;
+        border: 2px solid #ff85859d;
     }
     .display {
         display: flex;
@@ -155,7 +155,7 @@
     cursor: pointer;
     }
     .display i:hover {
-    color: #2eb7eb;
+    color: #fd4f4f9d;
     }
     
   </style>

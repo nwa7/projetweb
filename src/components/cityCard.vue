@@ -27,7 +27,7 @@ export default {
     .city-card{    
         width:20rem;
         text-align: center;
-        box-shadow: 0.1rem .2rem .4rem rgba(13, 230, 219, 0.295);
+        box-shadow: 0.1rem .2rem .4rem #ff85859d;
         background:#fff;
         margin:4rem 2rem;
         background-color: rgb(15, 3, 44);

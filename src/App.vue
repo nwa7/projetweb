@@ -3,7 +3,7 @@
 
   <header>
 
-      <h1>Hello World</h1>
+      <h1>Villes</h1>
    
   </header>
 
@@ -21,7 +21,7 @@
   export default {
     name : 'App',
     components : {
-      Gallery 
+      getGallery(); 
     }
   }
 </script>
