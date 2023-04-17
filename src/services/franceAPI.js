@@ -6,7 +6,7 @@ const loadCity = async function() {
   else {
     new Error(response.statusText)
   }
-  
+  console.log(response)
 };
   
   const loadDepartment = async function() {

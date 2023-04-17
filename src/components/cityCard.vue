@@ -1,16 +1,15 @@
 <template>
 
-    <div class="city-card">
-        <img :src="thumbnail" :alt="title">
-        <h3> {{ title }} </h3>
-
-    </div>
+<div class="city-card">
+  <img :src="require('@/assets/city.jpg')" :alt="name">
+  <h3>{{ name }}</h3>
+</div>
 
 </template>
 
 <script>
 export default {
-    name : 'CityCard',
+    name : 'cityCard',
     props : {
         name : String,
         cityCode: Number,
@@ -40,7 +39,6 @@ export default {
     }
     h3{
         margin: 0.5rem;
-        font-family: Orbitron ;
     }
     img{
         width: 100%;

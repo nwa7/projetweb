@@ -1,38 +1,13 @@
 <template>
 
-    <div class="gallery-options">
+        <p>Recherche d'une ville :</p>
 
-        <!--<div class="filter">
-            <label for="dog-sort"> Trier par : </label>
-            <select v-model="dogsSortType" id="dog-sort">
-                <option value="AZName">Noms de A à Z</option>
-                <option value="ZAName">Noms de Z à A</option>
-                <option value="AZBreed">Espèces de A à Z</option>
-                <option value="ZABreed">Espèces de Z à A</option>
-            </select>
-        </div>-->
-
-        <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" v-model="search" placeholder="Rechercher une ville ">
-            <span v-if="search" @click="cleanSearch">reset</span>
-            <i v-if="search && searchingList.length >= 1 ">
-            {{searchingList.length}} résultat<i v-if="searchingList.length >= 2">s </i>
-            </i>
+        <div class="searchBar">
+          <form action="" @submit.prevent = "searchCities">
+            <input type="search-bar" v-model="search" class="search" placeholder="Choisir une ville">
+            <input type="submit" name="submit" class="submit" alt="ok">
+          </form>
         </div>
-
-       
-
-        <ul class="display">
-            <li>
-                <i @click="gridView = true" class="fa-solid fa-grip fa-xl"></i>
-            </li>
-            <li>
-                <i @click="gridView = false" class="fa-solid fa-list fa-xl"></i>
-            </li>
-        </ul>
-    </div>
-
 
     <div class="city-gallery">
 
@@ -49,7 +24,7 @@
              
     </div>
 
-    <div v-if="searchingList.length == []">
+    <div v-if="searchingList.length === 0">
         <h2>Oh no..</h2>
         <p>Pas de ville correspondante dans la BDD</p>
     </div>
@@ -58,7 +33,7 @@
   
   <script>
   
-    import { loadCity } from '@/services/franceAPI';
+    import { loadCity, searchCities } from '@/services/franceAPI';
   
     import cityCard from './cityCard.vue';
   
@@ -78,8 +53,8 @@
     },
     computed: {
         searchingList(){
-            return this.citiesData.filter((citiesData) => {
-                return citiesData.title.toLowerCase().includes(this.search.toLowerCase());
+            return this.citiesData.filter((city) => {
+                return city.name.toLowerCase().includes(this.search.toLowerCase());
             })
         },
     },
@@ -89,6 +64,8 @@
   
     methods: {
       
+        searchCities,
+
         async retrieveCitiesData(){
             this.citiesData = await loadCity()
             console.log(this.citiesData)
@@ -96,14 +73,15 @@
         
         cleanSearch:function(){
             this.search = '' 
-		}
+		}, 
     },
+
   
   };
  
   </script>
   
-  <style scoped>
+  <style>
   
    
    .cities-gallery{
@@ -123,6 +101,28 @@
         position: relative;
         left: 3.5rem;
     }
+    .search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.search-bar span {
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
     span{
         position: relative;
         right: 1.3rem;
