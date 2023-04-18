@@ -8,7 +8,7 @@ const loadCity = async function() {
   }
   console.log(response)
 };
-  
+  /*
   const loadDepartment = async function() {
     const response = await fetch("https://geo.api.gouv.fr/departements");
     if(response.status == 200) {
@@ -30,17 +30,18 @@ const loadCity = async function() {
   };
   
   
-  const  searchCities = async function() {
+ /* const  searchCities = async function() {
     if (this.query === "") {
       this.searchResults = [];
       return;
     }
     const response = await fetch(
-      `https://geo.api.gouv.fr/communes?nom=${this.query}&fields=nom,codeDepartement,codeRegion`
+      `https://geo.api.gouv.fr/communes?nom=${this.query}`
     );
     const data = await response.json();
     this.searchResults = data;
-  };
+  };*/
 
-  
-  export { loadCity, loadDepartment, loadRegion, searchCities };
+
+  //export { loadCity, loadDepartment, loadRegion };
+  export { loadCity};

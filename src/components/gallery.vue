@@ -3,7 +3,7 @@
         <p>Recherche d'une ville :</p>
 
         <div class="searchBar">
-          <form action="" @submit.prevent = "searchCities">
+          <form action="" @submit.prevent = "searchingCities">
             <input type="search-bar" v-model="search" class="search" placeholder="Choisir une ville">
             <input type="submit" name="submit" class="submit" alt="ok">
           </form>
@@ -12,7 +12,7 @@
     <div class="city-gallery">
 
         <cityCard 
-            v-for="city in searchingList" 
+            v-for="city in searchingCities" 
             :key="city.cityCode"
             :name="city.name"
             :dpCode="city.dpCode"
@@ -24,7 +24,7 @@
              
     </div>
 
-    <div v-if="searchingList.length === 0">
+    <div v-if="searchingCities.length === 0">
         <h2>Oh no..</h2>
         <p>Pas de ville correspondante dans la BDD</p>
     </div>
@@ -33,7 +33,7 @@
   
   <script>
   
-    import { loadCity, searchCities } from '@/services/franceAPI';
+    import { loadCity} from '@/services/franceAPI';
   
     import cityCard from './cityCard.vue';
   
@@ -51,33 +51,31 @@
             gridView: true,
         }
     },
+
     computed: {
-        searchingList(){
-            return this.citiesData.filter((city) => {
-                return city.name.toLowerCase().includes(this.search.toLowerCase());
+        searchingCities(){
+            return this.citiesData.filter((citiesData) => {
+                return citiesData.name.toLowerCase().includes(this.search.toLowerCase());
             })
         },
+    
     },
+
     created: function(){
-        this.retrieveCitiesData()
+            this.retrieveCitiesData()
     },
-  
+
     methods: {
       
-        searchCities,
-
         async retrieveCitiesData(){
             this.citiesData = await loadCity()
             console.log(this.citiesData)
         },
-        
-        cleanSearch:function(){
-            this.search = '' 
-		}, 
     },
-
+    
   
   };
+
  
   </script>
   

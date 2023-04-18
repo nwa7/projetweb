@@ -18,6 +18,12 @@ export default {
         pop : Number,
         surface : Number,
         location : Array,
+    },
+    data(){
+        return {
+            citiesData:[],
+            search:'',
+        }
     }
 }
 </script>
