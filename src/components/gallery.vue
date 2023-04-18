@@ -1,4 +1,4 @@
-<template>
+git che<template>
     <div class="cities-gallery">
         <CityCard
           v-for="city in citiesData"
@@ -11,7 +11,7 @@
   
 <script>
 import { loadCity } from '@/services/franceAPI'
-import { cityCard } from './cityCard.vue'
+import { cityCard } from '@/components/cityCard.vue'
 
   export default {
   name: 'citiesGallery',
