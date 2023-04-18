@@ -1,4 +1,3 @@
-
 <template>
 
   <header>
@@ -8,7 +7,7 @@
   </header>
 
   <main>
-        <getGallery/>
+        <citiesGallery/>
 
   </main>
 
@@ -16,11 +15,12 @@
 </template>
 
 <script>
-  import getGallery from './components/gallery.vue';
+  import citiesGallery from './components/gallery.vue';
+
   export default {
     name : 'App',
     components : {
-      getGallery
+      citiesGallery
     }
   }
 </script>
@@ -46,7 +46,7 @@ h1{
     color: rgb(1, 1, 29);
     text-transform: uppercase;
 }
- .games-gallery{
+ .cities-gallery{
   display: flex;
   justify-content: center;
   padding-top: 3rem;

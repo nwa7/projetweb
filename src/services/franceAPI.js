@@ -6,8 +6,8 @@ const loadCity = async function() {
   else {
     new Error(response.statusText)
   }
-  console.log(response)
 };
+export { loadCity};
   /*
   const loadDepartment = async function() {
     const response = await fetch("https://geo.api.gouv.fr/departements");
@@ -44,4 +44,3 @@ const loadCity = async function() {
 
 
   //export { loadCity, loadDepartment, loadRegion };
-  export { loadCity};

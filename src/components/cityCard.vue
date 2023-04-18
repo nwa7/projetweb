@@ -1,52 +1,40 @@
 <template>
-
-<div class="city-card">
-  <img :src="require('@/assets/city.jpg')" :alt="name">
-  <h3>{{ name }}</h3>
-</div>
-
+    <div class="city-card">
+    <img class="picture" v-bind:src="pictureUrl"/>
+        <div>
+            <h2 class="name">{{name}}</h2>
+            <p class="breed">{{breed}}</p>
+        </div>
+    </div>
 </template>
-
-<script>
-export default {
-    name : 'cityCard',
-    props : {
-        name : String,
-        cityCode: Number,
-        dpCode : Number,
-        rCode : Number,
-        pop : Number,
-        surface : Number,
-        location : Array,
-    },
-    data(){
-        return {
-            citiesData:[],
-            search:'',
-        }
+  
+  <script>
+  export default {
+    name: 'cityCard',
+    props: {
+      name: { type: String, required: true },
+      breed: String,
+      pictureUrl: {
+        type: String,
+        default:
+          'https://citygame.com/wp-content/blogs.dir/1/files/sites/37/2022/06/Citygame.com-Secrets-of-Amsterdam-1280x720.png'
+      }
     }
-}
-</script>
-
-<style>
-    .city-card{    
-        width:20rem;
-        text-align: center;
-        box-shadow: 0.1rem .2rem .4rem #ff85859d;
-        background:#fff;
-        margin:4rem 2rem;
-        background-color: rgb(15, 3, 44);
-        color: rgb(162, 245, 245);
-        margin :1.3rem;
-        transition: all 0.2s ease;
-    }
-    .city-card:hover{    
-        scale: 1.05;
-    }
-    h3{
-        margin: 0.5rem;
-    }
-    img{
-        width: 100%;
-    }
-</style>
+  }
+  </script>
+  
+  <style scoped>
+  .city-card {
+    display: flex;
+  }
+  
+  .picture {
+    height: 100px;
+    width: 150px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  </style>
+  
