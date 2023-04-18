@@ -1,17 +1,19 @@
-git che<template>
+<template>
     <div class="cities-gallery">
-        <CityCard
-          v-for="city in citiesData"
-            :key="city.codePostal"
-            :name="city.nom"
-            :breed="city.pop"
-            :pictureUrl="citiesData[0].picture"/>
+      <cityCard
+        v-for="city in citiesData"
+        :key="city.codePostal"
+        :name="city.nom"
+        :breed="city.pop"
+        :pictureUrl="city.picture"
+      />
     </div>
 </template>
   
 <script>
+import { cityCard } from './card.vue'
 import { loadCity } from '@/services/franceAPI'
-import { cityCard } from '@/components/cityCard.vue'
+
 
   export default {
   name: 'citiesGallery',
@@ -31,8 +33,10 @@ import { cityCard } from '@/components/cityCard.vue'
 
   methods: {
       async retrieveCitiesData() {
-          this.citiesData = await loadCity()
-      }
+      console.log('Retrieving cities data...');
+      this.citiesData = await loadCity();
+      console.log('Cities data:', this.citiesData);
+  }
     }
   }
   </script>
