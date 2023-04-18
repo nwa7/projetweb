@@ -11,7 +11,7 @@
 </template>
   
 <script>
-import { cityCard } from './card.vue'
+import cityCard from './card.vue'
 import { loadCity } from '@/services/franceAPI'
 
 
@@ -20,7 +20,6 @@ import { loadCity } from '@/services/franceAPI'
   components : {
     cityCard,
   },
-
   data() {
       return {
       citiesData: []
