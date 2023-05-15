@@ -3,7 +3,7 @@
     <img class="picture" v-bind:src="pictureUrl"/>
         <div>
             <h2 class="name">{{name}}</h2>
-            <p class="breed">{{breed}}</p>
+            <p class="key">{{breed}}</p>
         </div>
     </div>
 </template>
