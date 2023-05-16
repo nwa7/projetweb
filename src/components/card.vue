@@ -3,7 +3,7 @@
     <img class="picture" v-bind:src="pictureUrl"/>
         <div>
             <h2 class="name">{{name}}</h2>
-            <p class="key">{{breed}}</p>
+            <p class="pop">{{pop}}</p>
         </div>
     </div>
 </template>
@@ -13,7 +13,7 @@
     name: 'cityCard',
     props: {
       name: { type: String, required: true },
-      breed: String,
+      pop: String,
       pictureUrl: {
         type: String,
         default:
@@ -25,7 +25,6 @@
   
   <style scoped>
   .city-card {
-    display: flex;
   }
   
   .picture {

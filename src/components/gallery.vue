@@ -1,27 +1,28 @@
 <template>
-  <div class="cities-gallery">
+  <div class="gallery">
     <div class="gallery-options">
       <input type="text" v-model="search" placeholder="Rechercher une ville">
-      <button v-if="search" @click="cleanSearch">X</button>
+      <button v-if="search" @click="cleanSearch">x</button>
       <label for="city-sort"> Trier par :</label>
       <select v-model="citiesSortType" id="city-sort">
         <option value="AZName">Noms de A à Z</option>
         <option value="ZAName">Noms de Z à A</option>
       </select>
     </div>
-    <div class="gallery">
-      <cityCard
-        v-for="city in displayedCities"
-        :key="city.codePostal"
-        :name="city.nom"
-        :breed="city.pop"
-        :pictureUrl="city.picture"
-      />
-    </div>
     <div class="pagination">
       <button @click="prevPage" :disabled="currentPage === 1">Précédent</button>
       <span>{{ currentPage }}</span>
       <button @click="nextPage" :disabled="currentPage === totalPages">Suivant</button>
+    </div>
+    <div class="cities-gallery">
+      
+      <cityCard
+        v-for="city in displayedCities"
+        :key="city.codePostal"
+        :name="city.nom"
+        :pop="city.pop"
+        :pictureUrl="city.picture"
+      />
     </div>
   </div>
 </template>
@@ -50,7 +51,7 @@ export default {
   },
   watch: {
     search() {
-      this.currentPage = 1; // Reset the page to 1 whenever a new search is performed
+      this.currentPage = 1; // Reset page to 1 when new search
     },
   },
   methods: {
@@ -81,7 +82,6 @@ export default {
     },
     filteredCities() {
       // Return the filtered cities based on the search input
-      // You can modify the logic as per your requirement
       return this.citiesData.filter(city => city.nom.toLowerCase().includes(this.search.toLowerCase()));
     },
     totalPages() {
@@ -96,4 +96,19 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+.cities-gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gallery-options{
+
+}
+.cities-sort{
+
+}
+
+</style>
