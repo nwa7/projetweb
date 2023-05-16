@@ -1,5 +1,23 @@
 const loadCity = async function() {
   const response = await fetch("https://geo.api.gouv.fr/communes");
+  if (response.status === 200) {
+    const data = await response.json();
+    return data.map(city => ({
+      nom: city.nom,
+      population: city.population,
+      codePostal: city.codePostal,
+      code: city.code,
+      localisation: city.localisation,
+    }));
+  } else {
+    throw new Error(response.statusText);
+  }
+};
+
+export { loadCity };
+
+/***const loadCity = async function() {
+  const response = await fetch("https://geo.api.gouv.fr/communes");
   if(response.status == 200) {
     return response.json()
   }
@@ -7,7 +25,8 @@ const loadCity = async function() {
     new Error(response.statusText)
   }
 };
-export { loadCity};
+export { loadCity};***/
+
   /*
   const loadDepartment = async function() {
     const response = await fetch("https://geo.api.gouv.fr/departements");

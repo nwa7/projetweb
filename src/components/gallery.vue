@@ -18,9 +18,10 @@
       
       <cityCard
         v-for="city in displayedCities"
-        :key="city.codePostal"
+        :key="city.code"
         :name="city.nom"
-        :pop="city.pop"
+        :pop="city.population"
+        :cp="city.codePostal"
         :pictureUrl="city.picture"
       />
     </div>
