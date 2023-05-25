@@ -3,7 +3,7 @@
     <img class="picture" :src="pictureUrl" />
     <div>
       <h2 class="name">{{ name }}</h2>
-      <p class="pop">{{ pop }}</p>
+      <p class="pop">{{ population }}</p>
       <p class="cp">{{ cp }}</p>
     </div>
   </div>
@@ -14,8 +14,8 @@ export default {
   name: 'cityCard',
   props: {
     name: { type: String, required: true },
-    pop: { type: Number, default: 0 }, 
-    cp: {type: String, default: 'llo'},
+    population: { type: Number, default: 0 }, // Corrected prop name to 'population'
+    cp: { type: String, default: 'pas d info' },
     pictureUrl: {
       type: String,
       default:

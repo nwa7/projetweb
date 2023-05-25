@@ -5,7 +5,7 @@ const loadCity = async function() {
     return data.map(city => ({
       nom: city.nom,
       population: city.population,
-      codePostal: city.codePostal,
+      codePostal: city.codesPostaux[0], 
       code: city.code,
       localisation: city.localisation,
     }));
@@ -15,6 +15,8 @@ const loadCity = async function() {
 };
 
 export { loadCity };
+
+
 
 /***const loadCity = async function() {
   const response = await fetch("https://geo.api.gouv.fr/communes");

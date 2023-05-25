@@ -20,7 +20,7 @@
         v-for="city in displayedCities"
         :key="city.code"
         :name="city.nom"
-        :pop="city.population"
+        :population="city.population"
         :cp="city.codePostal"
         :pictureUrl="city.picture"
       />
