@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Villes</h1>
+      <h1>Villes de France</h1>
     </header>
     <nav>
       <router-link to="/"> Présentation </router-link>
@@ -15,7 +15,7 @@
     </main>
   </div>
   <footer>
-      <h2>Fin de la page</h2>
+      <h5>Elia ROARD</h5>
     </footer>
 </template>
 
@@ -35,7 +35,7 @@ export default {
 #app {
     font-family: Helvetica, Arial, sans-serif;
     text-align: center;
-    color: #ff85859d;
+    color: #ff8585;
     background-color: rgb(1, 1, 29);
     min-height: 100vh;
   }
@@ -43,20 +43,36 @@ export default {
     min-height: 40vh;
     background: url(./assets/city.jpg) no-repeat;
     background-size: cover;
-    background-position: center;
     background-attachment: fixed;
     overflow:hidden;
 }
 h1{
     font-size: 80px;
+    margin-top:20%;
     color: rgb(1, 1, 29);
     text-transform: uppercase;
 }
  .cities-gallery{
   display: flex;
   justify-content: center;
-  padding-top: 3rem;
+  padding-top: 2rem;
   flex-wrap: wrap;
 }
+nav {
+  background-color: rgb(1, 1, 29);
+  padding: 10px;
+}
+
+nav a {
+  color: #ff8585;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #a12f2f;
+}
+
 
 </style>

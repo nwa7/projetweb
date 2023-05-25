@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-      <h3>Ceci est l'accueil</h3>
+      <h3>Projet web - Elia ROARD</h3>
     </div>
   </template>
   

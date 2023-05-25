@@ -89,6 +89,7 @@ export default {
     saveToLocalStorage() {
       localStorage.setItem("search", this.search);
       localStorage.setItem("citiesSortType", this.citiesSortType);
+      
     },
     loadFromLocalStorage() {
       this.search = localStorage.getItem("search") || "";

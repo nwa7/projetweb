@@ -3,8 +3,8 @@
     <div>
       <img v-bind:src="getImageUrl(codeRegion)" class="picture" alt="region area">
       <h2 class="name">{{ name }}</h2>
-      <p class="pop">{{ population }}</p>
-      <p class="cp">{{ cp }}</p>
+      <p class="pop">Nombre d'habitants : {{ population }}</p>
+      <p class="cp"> Code postal : {{ cp }}</p>
       <p class="dept">{{ department }}</p>
       <p class="region">{{ region }}</p>
     </div>
@@ -41,12 +41,18 @@ export default {
 
 <style scoped>
 .city-card {
-  /* Your styling here */
 }
 
 .picture {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
+}
+
+.name {
+  background-color:white;
+  border: red 0.2rem solid;
+  color: black;
+  border-radius: 5%;
 }
 
 h2 {
