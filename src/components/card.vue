@@ -5,6 +5,8 @@
       <h2 class="name">{{ name }}</h2>
       <p class="pop">{{ population }}</p>
       <p class="cp">{{ cp }}</p>
+      <p class="dept">{{ department }}</p>
+      <p class="region">{{ region }}</p>
     </div>
   </div>
 </template>
@@ -20,7 +22,9 @@ export default {
       type: String,
       default:
         'https://citygame.com/wp-content/blogs.dir/1/files/sites/37/2022/06/Citygame.com-Secrets-of-Amsterdam-1280x720.png'
-    }
+    },
+    department: { type: String, required: true },
+    region: { type: String, required: true }
   }
 }
 </script>

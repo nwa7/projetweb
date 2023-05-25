@@ -23,6 +23,8 @@
         :population="city.population"
         :cp="city.codePostal"
         :pictureUrl="city.picture"
+        :department="city.departement"
+        :region="city.region"
       />
     </div>
   </div>
