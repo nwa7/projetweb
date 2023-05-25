@@ -18,18 +18,18 @@
       <button @click="nextPage" :disabled="currentPage === totalPages">Suivant</button>
     </div>
     <div class="cities-gallery">
-      
-      <cityCard
-        v-for="city in displayedCities"
-        :key="city.code"
-        :name="city.nom"
-        :population="city.population"
-        :cp="city.codePostal"
-        :codeRegion="city.codeRegion"
-        :department="city.departement"
-        :region="city.region"
-      />
-    </div>
+    <cityCard
+      v-for="city in displayedCities"
+      :key="city.code"
+      :name="city.nom"
+      :population="city.population"
+      :cp="city.codePostal"
+      :codeRegion="city.codeRegion"
+      :department="city.departement"
+      :region="city.region"
+      @click="goToCityDetails(city)" 
+    />
+  </div>
   </div>
 </template>
 
@@ -53,11 +53,16 @@ export default {
     }
   },
   created() {
-    this.retrieveCitiesData()
+    this.retrieveCitiesData();
+    this.loadFromLocalStorage();
   },
   watch: {
     search() {
       this.currentPage = 1; // Remettre à la première page à chaque recherche
+      this.saveToLocalStorage();
+    },
+    citiesSortType() {
+      this.saveToLocalStorage();
     },
   },
   methods: {
@@ -67,7 +72,7 @@ export default {
       console.log('Cities data:', this.citiesData);
     },
     cleanSearch() {
-      this.search = ""
+      this.search = "";
     },
     nextPage() {
       this.currentPage++;
@@ -76,13 +81,19 @@ export default {
       this.currentPage--;
     },
     getImageUrl(regionCode) {
-    if (!regionCode) {
-      return require('@/assets/94.png');
+      if (!regionCode) {
+        return require('@/assets/94.png');
+      }
+      return require(`@/assets/${regionCode}.png`);
+    },
+    saveToLocalStorage() {
+      localStorage.setItem("search", this.search);
+      localStorage.setItem("citiesSortType", this.citiesSortType);
+    },
+    loadFromLocalStorage() {
+      this.search = localStorage.getItem("search") || "";
+      this.citiesSortType = localStorage.getItem("citiesSortType") || "AZName";
     }
-    return require(`@/assets/${regionCode}.png`);
-  },
-
-
   },
   computed: {
     sortedCitiesData() {
@@ -91,11 +102,9 @@ export default {
         data.sort((a, b) => a.nom.localeCompare(b.nom));
       } else if (this.citiesSortType === "ZAName") {
         data.sort((a, b) => b.nom.localeCompare(a.nom));
-      }
-      else if (this.citiesSortType === "croiPop") {
+      } else if (this.citiesSortType === "croiPop") {
         data.sort((a, b) => a.population - b.population);
-      }
-      else if (this.citiesSortType === "decroiPop") {
+      } else if (this.citiesSortType === "decroiPop") {
         data.sort((a, b) => b.population - a.population);
       }
       return data;
@@ -114,6 +123,7 @@ export default {
   },
 }
 </script>
+
 
 <style>
 

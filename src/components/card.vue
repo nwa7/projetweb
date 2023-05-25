@@ -1,9 +1,9 @@
 <template>
   <div class="city-card">
     <div>
-      <img :src="getImageUrl(codeRegion)" class="picture" alt="City Image">
+      <img v-bind:src="getImageUrl(codeRegion)" class="picture" alt="region area">
       <h2 class="name">{{ name }}</h2>
-      <p class="population">{{ population }}</p>
+      <p class="pop">{{ population }}</p>
       <p class="cp">{{ cp }}</p>
       <p class="dept">{{ department }}</p>
       <p class="region">{{ region }}</p>

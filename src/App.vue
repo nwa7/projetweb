@@ -4,14 +4,19 @@
       <h1>Villes</h1>
     </header>
     <nav>
-      <router-link to="/">Présentation</router-link>
-      <router-link to="/gallery">Gallerie</router-link>
-      <router-link to="/game">Jeu</router-link>
+      <router-link to="/"> Présentation </router-link>
+
+      <router-link to="/gallery"> Galerie </router-link>
+
+      <router-link to="/game"> Jeu </router-link>
     </nav>
     <main>
       <router-view></router-view>
     </main>
   </div>
+  <footer>
+      <h2>Fin de la page</h2>
+    </footer>
 </template>
 
 <script>
