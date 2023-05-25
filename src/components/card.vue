@@ -3,7 +3,7 @@
     <div>
       <img :src="getImageUrl(codeRegion)" class="picture" alt="City Image">
       <h2 class="name">{{ name }}</h2>
-      <p class="pop">{{ population }}</p>
+      <p class="population">{{ population }}</p>
       <p class="cp">{{ cp }}</p>
       <p class="dept">{{ department }}</p>
       <p class="region">{{ region }}</p>
@@ -16,10 +16,11 @@ export default {
   name: 'cityCard',
   props: {
     name: { type: String, required: true },
+    population: {type: Number, default : 0 },
     cp: { type: String, default: 'pas d info' },
     department: { type: String, required: true },
     region: { type: String, required: true },
-    codeRegion: { type: Number, default: 94 }
+    codeRegion: { type: String, default: '94' }
   },
   methods: {
     getImageUrl(regionCode) {

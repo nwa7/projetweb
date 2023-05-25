@@ -2,12 +2,15 @@
   <div class="gallery">
     <div class="gallery-options">
       <input type="text" v-model="search" placeholder="Rechercher une ville">
-      <button v-if="search" @click="cleanSearch">x</button>
+      <button v-show="search" @click="cleanSearch">x</button>
       <label for="city-sort"> Trier par :</label>
       <select v-model="citiesSortType" id="city-sort">
-        <option value="AZName">Noms de A à Z</option>
-        <option value="ZAName">Noms de Z à A</option>
-      </select>
+      <option v-if="citiesSortType !== 'AZName'" value="AZName">Noms de A à Z</option>
+      <option v-if="citiesSortType !== 'ZAName'" value="ZAName">Noms de Z à A</option>
+      <option v-if="citiesSortType !== 'croiPop'" value="croiPop">Population croissante</option>
+      <option v-if="citiesSortType !== 'decroiPop'" value="decroiPop">Population décroissante</option>
+</select>
+
     </div>
     <div class="pagination">
       <button @click="prevPage" :disabled="currentPage === 1">Précédent</button>
@@ -89,6 +92,12 @@ export default {
       } else if (this.citiesSortType === "ZAName") {
         data.sort((a, b) => b.nom.localeCompare(a.nom));
       }
+      else if (this.citiesSortType === "croiPop") {
+        data.sort((a, b) => a.population - b.population);
+      }
+      else if (this.citiesSortType === "decroiPop") {
+        data.sort((a, b) => b.population - a.population);
+      }
       return data;
     },
     filteredCities() {
@@ -121,4 +130,4 @@ export default {
 
 }
 
-</style>
+</style> 

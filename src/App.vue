@@ -1,30 +1,30 @@
 <template>
-
-  <header>
-
+  <div id="app">
+    <header>
       <h1>Villes</h1>
-   
-  </header>
-
-  <main>
-    
-        <citiesGallery/>
-
-  </main>
-
-
+    </header>
+    <nav>
+      <router-link to="/">Présentation</router-link>
+      <router-link to="/gallery">Gallerie</router-link>
+      <router-link to="/game">Jeu</router-link>
+    </nav>
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script>
-  import citiesGallery from './components/gallery.vue';
+import { RouterLink } from 'vue-router';
 
-  export default {
-    name : 'App',
-    components : {
-      citiesGallery
-    }
+export default {
+  name: 'App',
+  components: {
+    RouterLink
   }
+};
 </script>
+
 
 <style>
 #app {
