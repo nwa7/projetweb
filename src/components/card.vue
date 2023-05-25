@@ -1,7 +1,7 @@
 <template>
   <div class="city-card">
-    <img class="picture" :src="pictureUrl" />
     <div>
+      <img :src="getImageUrl(codeRegion)" class="picture" alt="City Image">
       <h2 class="name">{{ name }}</h2>
       <p class="pop">{{ population }}</p>
       <p class="cp">{{ cp }}</p>
@@ -16,18 +16,27 @@ export default {
   name: 'cityCard',
   props: {
     name: { type: String, required: true },
-    population: { type: Number, default: 0 }, // Corrected prop name to 'population'
     cp: { type: String, default: 'pas d info' },
-    pictureUrl: {
-      type: String,
-      default:
-        'https://citygame.com/wp-content/blogs.dir/1/files/sites/37/2022/06/Citygame.com-Secrets-of-Amsterdam-1280x720.png'
-    },
     department: { type: String, required: true },
-    region: { type: String, required: true }
+    region: { type: String, required: true },
+    codeRegion: { type: Number, default: 94 }
+  },
+  methods: {
+    getImageUrl(regionCode) {
+    try {
+      if (!regionCode) {
+        return require('@/assets/drom.png');
+      }
+      return require(`@/assets/${regionCode}.png`);
+    } catch (error) {
+      console.error(error);
+      return require('@/assets/drom.png');
+    }
+  }
   }
 }
 </script>
+
 
 <style scoped>
 .city-card {
@@ -36,7 +45,7 @@ export default {
 
 .picture {
   height: 100px;
-  width: 150px;
+  width: 100px;
 }
 
 h2 {

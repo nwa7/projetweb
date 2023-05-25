@@ -22,7 +22,7 @@
         :name="city.nom"
         :population="city.population"
         :cp="city.codePostal"
-        :pictureUrl="city.picture"
+        :codeRegion="city.codeRegion"
         :department="city.departement"
         :region="city.region"
       />
@@ -34,7 +34,7 @@
 import cityCard from './card.vue'
 import { loadCity } from '@/services/franceAPI'
 
-const RESULTS_PER_PAGE = 20; // Number of search results per page
+const RESULTS_PER_PAGE = 20; // Images par page
 
 export default {
   name: 'citiesGallery',
@@ -54,7 +54,7 @@ export default {
   },
   watch: {
     search() {
-      this.currentPage = 1; // Reset page to 1 when new search
+      this.currentPage = 1; // Remettre à la première page à chaque recherche
     },
   },
   methods: {
@@ -72,6 +72,14 @@ export default {
     prevPage() {
       this.currentPage--;
     },
+    getImageUrl(regionCode) {
+    if (!regionCode) {
+      return require('@/assets/94.png');
+    }
+    return require(`@/assets/${regionCode}.png`);
+  },
+
+
   },
   computed: {
     sortedCitiesData() {
@@ -84,7 +92,6 @@ export default {
       return data;
     },
     filteredCities() {
-      // Return the filtered cities based on the search input
       return this.citiesData.filter(city => city.nom.toLowerCase().includes(this.search.toLowerCase()));
     },
     totalPages() {
