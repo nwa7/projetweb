@@ -154,16 +154,13 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  
 }
 
 .erase-button {
   margin-left:-18px;
 }
 
-.gallery-options {
-}
 
-.cities-sort {
-}
 
 </style>

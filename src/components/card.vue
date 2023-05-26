@@ -3,7 +3,7 @@
     <div>
       <img v-bind:src="getImageUrl(codeRegion)" class="picture" alt="region area">
       <div class="city-info">
-      <h2 class="name">{{ name }}</h2>
+      <div class="name">{{ name }}</div>
 
       <div class="city-details">
       <p class="pop">Nombre d'habitants : {{ population }}</p>
@@ -45,36 +45,37 @@ export default {
 
 <style scoped>
 .city-card {
+  width:22%;
 }
 
 .picture {
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
+  display: flex; 
 }
 
 .city-info {
   max-width: 200px;
+  display: flex; 
+  flex-direction: column; 
+  margin-top:5px;
 }
 
 .city-details{
-  width: 100%;
   font-size: 0.7rem;
   color: white;
   height: 100%;
   margin-bottom:15px;
-  align-items: center;
-  justify-content: center;
 }
 
 
 .name {
+  font-family: 'Staatliches', cursive;
+  font-size : 20px;
   background-color:white;
   border: red 0.2rem solid;
   color: black;
-  border-radius: 5%;
+  letter-spacing: 2px;
 }
 
-h2 {
-  font-size: 20px;
-}
 </style>
