@@ -13,7 +13,6 @@ const loadCity = async function() {
       population: city.population,
       codePostal: city.codesPostaux[0],
       code: city.code,
-      localisation: city.localisation,
       codeRegion: city.codeRegion,
       departement: departmentsMap.get(city.codeDepartement),
       region: regionsMap.get(city.codeRegion)
