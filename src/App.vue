@@ -33,11 +33,11 @@ export default {
 
 <style>
 #app {
-    font-family: Helvetica, Arial, sans-serif;
-    text-align: center;
-    color: #ff8585;
-    background-color: rgb(1, 1, 29);
-    min-height: 100vh;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #ff8585;
+  background-color: rgb(1, 1, 29);
+  min-height: 100vh;
   }
 header{
   min-height: 40vh;
@@ -52,10 +52,10 @@ footer{
   padding-right:20px;
 }
 h1{
-    font-size: 80px;
-    margin-top:20%;
-    color: rgb(1, 1, 29);
-    text-transform: uppercase;
+  font-size: 80px;
+  margin-top:20%;
+  color: rgb(1, 1, 29);
+  text-transform: uppercase;
 }
 .cities-gallery{
   display: flex;

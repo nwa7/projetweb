@@ -3,7 +3,7 @@
     <div class="gallery-options">
       <input type="text" v-model="search" placeholder="Rechercher une ville">
       <button class="erase-button" v-show="search" @click="cleanSearch">x</button>
-      <label for="city-sort">Trier par :</label>
+      <label for="city-sort"> Trier par : </label>
       <select v-model="citiesSortType" id="city-sort">
         <option v-if="citiesSortType !== 'AZName'" value="AZName">Noms de A à Z</option>
         <option v-if="citiesSortType !== 'ZAName'" value="ZAName">Noms de Z à A</option>
@@ -11,7 +11,7 @@
         <option v-if="citiesSortType !== 'decroiPop'" value="decroiPop">Population décroissante</option>
       </select>
 
-      <label for="region-filter">Filtrer par région :</label>
+      <label for="region-filter"> Filtrer par région : </label>
       <select v-model="selectedRegion" id="region-filter">
         <option value="">Toutes les régions</option>
         <option v-for="region in regions" :value="region" :key="region">{{ region }}</option>
@@ -35,7 +35,6 @@
         :codeRegion="city.codeRegion"
         :department="city.departement"
         :region="city.region"
-        @click="goToCityDetails(city)" 
       />
     </div>
   </div>
@@ -82,9 +81,7 @@ export default {
   },
   methods: {
     async retrieveCitiesData() {
-      console.log('Retrieving cities data...');
       this.citiesData = await loadCity();
-      console.log('Cities data:', this.citiesData);
     },
     cleanSearch() {
       this.search = "";
@@ -160,7 +157,5 @@ export default {
 .erase-button {
   margin-left:-18px;
 }
-
-
 
 </style>

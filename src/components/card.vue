@@ -3,14 +3,13 @@
     <div>
       <img v-bind:src="getImageUrl(codeRegion)" class="picture" alt="region area">
       <div class="city-info">
-      <div class="name">{{ name }}</div>
-
-      <div class="city-details">
-      <p class="pop">Nombre d'habitants : {{ population }}</p>
-      <p class="cp"> Code postal : {{ cp }}</p>
-      <p class="loc">{{ department }}, {{ region }}</p>
-    </div>
-    </div>
+        <div class="name">{{ name }}</div>
+        <div class="city-details">
+        <p class="pop">Nombre d'habitants : {{ population }}</p>
+        <p class="cp"> Code postal : {{ cp }}</p>
+        <p class="loc">{{ department }}, {{ region }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
