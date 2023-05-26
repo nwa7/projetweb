@@ -10,7 +10,7 @@
       <button @click="checkGuess">Ok</button>
       <button @click="pickRandomCity">Ville suivante</button>
       <p v-if="isCorrect !== null">
-        Ta réponse est <strong>{{ isCorrect ? 'correcte' : 'incorrecte' }}</strong>.
+      <strong>{{ isCorrect ? 'Oui !! ' : 'Non. ' }}</strong>
         <span v-if="!isCorrect">La bonne réponse était : <strong>{{ correctRegion }}</strong>.</span>
       </p>
     </div>
