@@ -1,6 +1,6 @@
 # Projet web 2023 - Elia ROARD
 
-API utilisée - https://geo.api.gouv.fr/communes
+API utilisée - https://api.gouv.fr/documentation/api-geo
 
 
 
