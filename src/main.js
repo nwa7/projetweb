@@ -2,8 +2,6 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomePage from './components/home.vue'
-
-// Import your components and define routes here
 import citiesGallery from './components/gallery.vue';
 import citiesGame from './components/game.vue';
 

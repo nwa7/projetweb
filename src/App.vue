@@ -15,7 +15,7 @@
     </main>
   </div>
   <footer>
-      <h5>Elia ROARD</h5>
+      <h5>Elia ROARD 2023</h5>
     </footer>
 </template>
 
@@ -39,12 +39,17 @@ export default {
     background-color: rgb(1, 1, 29);
     min-height: 100vh;
   }
-  header{
-    min-height: 40vh;
-    background: url(./assets/city.jpg) no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    overflow:hidden;
+header{
+  min-height: 40vh;
+  background: url(./assets/city.jpg) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow:hidden;
+}
+footer{
+  text-align:right;
+  padding-bottom:5px;
+  padding-right:20px;
 }
 h1{
     font-size: 80px;
@@ -52,7 +57,7 @@ h1{
     color: rgb(1, 1, 29);
     text-transform: uppercase;
 }
- .cities-gallery{
+.cities-gallery{
   display: flex;
   justify-content: center;
   padding-top: 2rem;
